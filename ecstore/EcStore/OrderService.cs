@@ -20,11 +20,16 @@ namespace EcStore
             var bookDao = new BookDao();
             foreach (var order in ordersOfBook)
             {
-                bookDao.Insert(order);
+                InsertOrder(bookDao, order);
             }
         }
 
-        private List<OrderEntity> GetOrders()
+        protected virtual void InsertOrder(BookDao bookDao, OrderEntity order)
+        {
+            bookDao.Insert(order);
+        }
+
+        protected virtual List<OrderEntity> GetOrders()
         {
             // parse csv file to get orders
             var result = new List<OrderEntity>();
@@ -66,4 +71,6 @@ namespace EcStore
             return result;
         }
     }
+
+
 }
