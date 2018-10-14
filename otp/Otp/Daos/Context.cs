@@ -2,9 +2,9 @@
 
 namespace Otp.Daos
 {
-    public static class Context
+    public  class Context
     {
-        private static Dictionary<string, string> profiles;
+        protected static Dictionary<string, string> profiles;
 
         static Context()
         {
@@ -15,7 +15,7 @@ namespace Otp.Daos
             };
         }
 
-        public static string GetPassword(string key)
+        public string GetPassword(string key)
         {
             return profiles[key];
         }

@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using Otp;
+using Otp.Daos;
 
 namespace OtpTests
 {
@@ -10,7 +11,7 @@ namespace OtpTests
         [Test]
         public void IsValidTest()
         {
-            var target = new AuthenticationService();
+            var target = new AuthenticationService(new ProfileDao(new fakeContext()), new RsaTokenDao(true) );
 
             var actual = target.IsValid("marcus", "86000000");
             Assert.True(actual);
